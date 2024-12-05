@@ -6,15 +6,11 @@ spring:
     template:
       default-topic: real-ride-events
     consumer:
-      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
-      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      topic: real-ride-events
       group-id: real-ride-listener-group
-    producer:
-      bootstrap-servers:
-        -  localhost:9092,localhost:9093,localhost:9094
-      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retry:
+        max-attempts: 5
+        attempt-interval-in-seconds: 3
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver

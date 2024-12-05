@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class RealRideEventConsumer {
 
-    @KafkaListener(topics = {"real-ride-events"})
-    public void onMessage(ConsumerRecord<Integer, String> consumerRecord) {
+    @KafkaListener(
+            topics = "#{'${spring.kafka.consumer.topic}'}",
+            groupId = "#{'${spring.kafka.consumer.group-id}'}",
+            containerFactory = "containerFactory")
+    public void onMessage(ConsumerRecord<Integer, Integer> consumerRecord) {
         log.info("ConsumerRecord: {}", consumerRecord);
     }
 }
