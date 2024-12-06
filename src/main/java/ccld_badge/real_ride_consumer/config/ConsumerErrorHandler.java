@@ -1,6 +1,8 @@
 package ccld_badge.real_ride_consumer.config;
 
 import java.time.format.DateTimeParseException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.errors.SerializationException;
 import org.springframework.kafka.listener.DefaultErrorHandler;
@@ -20,5 +22,6 @@ public class ConsumerErrorHandler extends DefaultErrorHandler {
 
         addNotRetryableExceptions(SerializationException.class);
         addNotRetryableExceptions(DateTimeParseException.class);
+        addNotRetryableExceptions(JsonProcessingException.class);
     }
 }

@@ -12,10 +12,10 @@ spring:
         max-attempts: 5
         attempt-interval-in-seconds: 3
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:real-ride-db
     driver-class-name: org.h2.Driver
-    data-username: root
-    data-password: root
+    username: root
+    password: root
   jpa:
     database: h2
     database-platform: org.hibernate.dialect.H2Dialect
